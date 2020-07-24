@@ -51,5 +51,13 @@ pipeline{
                 }
             }
         }
+        stage ('Functional Test') {
+            steps {
+                dir('functional-test') {
+                    git credentialsId: 'GitHub_Login', url: 'https://github.com/romelo2/tasks-functional-tests'        
+                    bat 'mvn test'    
+                }
+            }
+        }
     }
 }
