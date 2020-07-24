@@ -33,5 +33,13 @@ pipeline{
                 deploy adapters: [tomcat8(credentialsId: 'TomCatLogin', path: '', url: 'http://52.90.38.207:8001/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
             }
         }
+        stage ('API Test') {
+            steps {
+                dir('api-test') {
+                git credentialsId: 'GitHub_Login', url: 'https://github.com/romelo2/tasks-api-test'        
+                bat 'mvn test'    
+                }
+            }
+        }
     }
 }
