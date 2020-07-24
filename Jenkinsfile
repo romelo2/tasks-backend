@@ -1,9 +1,9 @@
 pipeline{
     agent any
     stages{
-        stage('Just test'){
+        stage('Just Test'){
             steps{
-                bat 'echo eu erto'
+                bat 'echo Deu Certo'
             }
         }
     }
