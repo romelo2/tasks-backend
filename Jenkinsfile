@@ -31,7 +31,7 @@ pipeline{
         }
         stage ('Deploy Backend') {
             steps {
-                deploy adapters: [tomcat8(credentialsId: 'TomCatLogin', path: '', url: 'http://52.90.38.207:8001/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
+                deploy adapters: [tomcat8(credentialsId: 'TomCatLogin', path: '', url: 'http://18.212.115.92:8001/')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
             }
         }
         stage ('API Test') {
@@ -47,7 +47,7 @@ pipeline{
                 dir('frontend') {
                     git credentialsId: 'GitHub_Login', url: 'https://github.com/romelo2/tasks-frontend'
                     bat 'mvn clean package'
-                    deploy adapters: [tomcat8(credentialsId: 'TomCatLogin', path: '', url: 'http://52.90.38.207:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
+                    deploy adapters: [tomcat8(credentialsId: 'TomCatLogin', path: '', url: 'http://18.212.115.92:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
                 }
             }
         }
